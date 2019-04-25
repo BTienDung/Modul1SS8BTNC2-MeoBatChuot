@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Rat(name,weight,speed,talk) {
+        this.name = name;
+        this.weightRat = weight;
+        this.speed = speed;
+        this.talk = talk;
+
+        this.getName = function () {
+            return this.name;
+        }
+        this.getWeight = function () {
+            return this.weightRat;
+        }
+        this.getSpeed = function () {
+            return this.speed;
+        }
+        this.mouseLife = function () {
+            return true;
+        }
+        this.mouseDie = function () {
+            return false;
+        }
+
+        this.getTalk = function () {
+            return this.talk;
+        }
+    }
+    function Cat(name, weight, maxSpeed) {
+        this.name = name;
+        this.weightCat = weight;
+        this.maxSpeed = maxSpeed;
+
+        this.getName = function () {
+            return this.name;
+        }
+        this.getWeight = function () {
+            return this.weightCat;
+        }
+        this.getCatchMouse = function (Rat) {
+            if (this.maxSpeed > Rat.speed){
+                Rat.mouseDie();
+            }
+        }
+        this.getEatRat = function (Rat) {
+            if (this.maxSpeed>Rat.speed){
+                this.weightCat++;
+                Rat.weightRat--;
+                document.write('Mèo đã ăn chuột');
+            } else {
+                document.write('Mèo không bắt được chuột');
+            }
+        }
+    }
+
+    let rat1 = new Rat('rat', 2, 5, 'Chít chít' );
+
+    let cat1 = new Cat('cat', 2,3,'Mew mew');
+    cat1.getCatchMouse(rat1);
+    cat1.getEatRat(rat1);
+    console.log(cat1.getWeight());
+    console.log(rat1.getWeight());
+
+
+
+</script>
+</body>
+</html>
